@@ -190,3 +190,79 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 374px) {
+
+    .contact-section {
+        padding: 60px 4%;
+    }
+
+    .contact-header {
+        margin-bottom: 25px;
+    }
+
+    .contact-title {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
+
+    .contact-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .contact-grid {
+        gap: 25px;
+    }
+
+    .info-card {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .info-item {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .info-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .info-item p {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+    .social-links-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-btn {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        padding: 14px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+
+    .input-group textarea {
+        min-height: 120px;
+    }
+
+    .submit-btn {
+        padding: 14px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+
+    .status-msg {
+        font-size: 0.8rem;
+    }
+}
