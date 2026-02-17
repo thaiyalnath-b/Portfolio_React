@@ -1,6 +1,8 @@
 import React from 'react';
 import './About.css';
 
+import aboutImg from '../../assets/aboutpage.webp';
+
 function About() {
   return (
     <section id='about' className='about-section'>
@@ -9,7 +11,7 @@ function About() {
 
           <div className='about-visual-side'>
             <div className='image-holder'>
-              <img src="/src/assets/aboutpage.webp" alt="Thaiyalnath" className='main-img' />
+              <img src={aboutImg} alt="Thaiyalnath" className='main-img' />
               <div className='img-glass-overlay'></div>
               <div className='tech-frame'></div>
             </div>
