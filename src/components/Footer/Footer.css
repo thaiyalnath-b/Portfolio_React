@@ -1,9 +1,10 @@
 .footer-wrap {
   padding: 80px 5% 40px;
-  /* Uses a deep background to contrast with the slightly lighter main body */
-  background: #03050a; 
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
+   box-shadow:
+        0 4px 30px rgba(0, 210, 255, 0.08),
+        0 0 40px rgba(167, 139, 250, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .footer-container {
