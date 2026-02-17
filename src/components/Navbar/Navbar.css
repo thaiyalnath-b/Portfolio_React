@@ -4,11 +4,16 @@
     /* padding: 10px 30px !important; */
     /* border-radius: 100px; */
     background: rgba(10, 5, 20, 0.6);
-    border: 1px solid rgba(167, 139, 250, 0.15);
+    /* border: 1px solid rgba(167, 139, 250, 0.15); */
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     animation: navbarFadeIn 1.2s ease-out;
+    box-shadow:
+        0 4px 30px rgba(0, 210, 255, 0.08),
+        0 0 40px rgba(167, 139, 250, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
 }
 
 @keyframes navbarFadeIn {
@@ -105,11 +110,12 @@
 
 
 @media (max-width: 991px) {
+
     /* .navbar-style {
         width: 95%;
         border-radius: 20px;
     } */
-    .nav-custom{
+    .nav-custom {
         padding: 8px 16px !important;
     }
 
@@ -117,7 +123,7 @@
         width: 100%;
         border-radius: 0 0 20px 20px;
     }
-   
+
 }
 
 

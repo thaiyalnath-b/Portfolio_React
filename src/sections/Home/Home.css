@@ -5,6 +5,7 @@
     padding: 0 2%;
     min-height: 85vh;
     padding-top: 180px;
+    padding-bottom: 96px;
 }
 
 .home-container {
@@ -105,8 +106,9 @@
 
 .btn-hire:hover {
     transform: translateY(-4px);
-    background: #ffffff;
-    color: #00d2ff;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-cv {

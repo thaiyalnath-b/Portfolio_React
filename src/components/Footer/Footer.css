@@ -1,0 +1,152 @@
+.footer-wrap {
+  padding: 80px 5% 40px;
+  /* Uses a deep background to contrast with the slightly lighter main body */
+  background: #03050a; 
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-logo {
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.cyan-dot {
+  color: #00d2ff;
+  /* Subtle glow to match your project cards */
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+.footer-bio {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 60px;
+}
+
+.group-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #00d2ff;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.link-group a {
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.link-group a:hover {
+  color: #ffffff;
+  /* Sophisticated hover animation */
+  transform: translateX(8px);
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  /* Elegant gradient divider that fades into the background */
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin-bottom: 30px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.legal-info p {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* Technical Status Indicator */
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status-indicator {
+  position: relative;
+  width: 8px;
+  height: 8px;
+}
+
+.dot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #00ff88;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.ping {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #00ff88;
+  border-radius: 50%;
+  /* Radar-like pulse effect */
+  animation: ping-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping-pulse {
+  75%, 100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+.status-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; text-align: center; }
+  .footer-bio { margin: 0 auto; }
+  .footer-links { width: 100%; justify-content: space-around; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
