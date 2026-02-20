@@ -36,25 +36,25 @@ function Home() {
       <div className='container home-container'>
         <div className='home-content'>
           <div className='reveal-box'>
-            <h3 className='greet'>Hello!</h3>
+            <h3 className='greet fade-up'>Hello!</h3>
           </div>
 
-          <h1 className='name'>
+          <h1 className='name fade-up delay-1'>
             <span className='i-am'>I am</span> Thaiyalnath
             <span className='cursor-blink'>_</span>
           </h1>
 
-          <div className='role-container'>
+          <div className='role-container fade-up delay-2'>
              <h2 className='role'>
               Python Full Stack <span className='highlight'>Developer</span>
             </h2>
           </div>
 
-          <p className='text'>
+          <p className='text fade-up delay-3'>
             Building the digital bridge between <b>robust backend</b> logic and <b>elegant frontend</b> design. I craft high-performance applications with a focus on user experience.
           </p>
 
-          <div className='home-actions'>
+          <div className='home-actions fade-up delay-4'>
               <button 
                 className="btn-hire" 
                 onClick={() => window.location.href='mailto:thaiyalanth2005@gmail.com'}
@@ -67,7 +67,7 @@ function Home() {
           </div>
         </div>
 
-        <div className='home-image-wrapper'>
+        <div className='home-image-wrapper fade-up delay-2'>
           <div className='blob-shape'></div>
           <div className='image-glow-backdrop'></div>
           <img src={profileImg} alt="Profile" className='profile-image' />

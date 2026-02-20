@@ -1,0 +1,60 @@
+/* Same background as your hero section */
+.intro-loader {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at 70% 40%, #1f2a44, #0b001a 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 1s ease;
+}
+
+/* Your Name */
+.intro-name {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.intro-text {
+  color: #cfcfcf;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+/* Progress bar */
+.intro-bar {
+  width: 260px;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Animated fill */
+.intro-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  box-shadow: 0 0 15px #00d2ff;
+  transition: width 0.2s ease;
+}
+
+.intro-percent {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* Smooth appearance */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
