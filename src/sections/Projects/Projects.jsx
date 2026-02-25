@@ -1,7 +1,7 @@
 import React from "react";
 import "./Projects.css";
 
-import ecom from '../../assets/eco.png';
+import ecom from '../../assets/ecomm.png';
 import ins from '../../assets/ita.png';
 import fnc from '../../assets/fnc.png';
 import whether from '../../assets/whr.png';
