@@ -8,7 +8,7 @@ import Projects from "./sections/Projects/Projects";
 import Contact from "./sections/Contact/Contact";
 import Footer from './components/Footer/Footer';
 import IntroLoader from "./components/Intro/IntroLoader";
-import VisitorCounter from "./components/VisitorCounter/VisitorCounter";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [loading, setLoading] = useState(true); // 👈 control intro
@@ -26,7 +26,7 @@ function App() {
           <Projects />
           <Contact />
           <Footer />
-           <VisitorCounter />
+          <Analytics />
         </>
       )}
     </>
