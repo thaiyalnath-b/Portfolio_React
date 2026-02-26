@@ -2,9 +2,9 @@ import React from "react";
 import "./Projects.css";
 
 import ecom from '../../assets/ecomm.png';
-import ins from '../../assets/ita.png';
-import fnc from '../../assets/fnc.png';
-import whether from '../../assets/whr.png';
+import ins from '../../assets/instaoutput.png';
+import fnc from '../../assets/whetheroutput.png';
+import whether from '../../assets/financeoutput.png';
 import port from '../../assets/plo.png';
 
 const projects = [
