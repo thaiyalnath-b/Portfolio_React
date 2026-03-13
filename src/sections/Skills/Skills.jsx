@@ -43,7 +43,7 @@ function Skills() {
             </div>
             <h3>Database</h3>
             <div className="skill-tags">
-              <span>MySQL</span><span>SQLite</span><span>Django ORM</span>
+              <span>MySQL</span><span>MongoDB</span><span>SQLite</span><span>Django ORM</span>
             </div>
           </div>
 
@@ -65,7 +65,7 @@ function Skills() {
             </div>
             <h3>Cloud</h3>
             <div className="skill-tags">
-              <span>PythonAnywhere</span><span>Static Management</span><span>Environment Configuration</span>
+              <span>PythonAnywhere</span><span>Static Management</span><span>Environment Configuration</span><span>Vercel</span>
             </div>
           </div>
 

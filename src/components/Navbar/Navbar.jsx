@@ -43,7 +43,7 @@ function Navbar() {
 
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
-                        {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+                        {['home', 'about', 'Experience', 'skills', 'projects', 'contact'].map((item) => (
                             <li className="nav-item" key={item}>
                                 <a className="nav-link nav-custom" href={`#${item}`} onClick={closeMenu}>
                                     {item.charAt(0).toUpperCase() + item.slice(1)}

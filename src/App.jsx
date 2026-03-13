@@ -3,6 +3,7 @@ import { useState } from "react";
 import Navbar from './components/Navbar/Navbar';
 import Home from "./sections/Home/Home";
 import About from "./sections/About/About";
+import Experience from "./sections/Experience/Experience";
 import Skills from "./sections/Skills/Skills";
 import Projects from "./sections/Projects/Projects";
 import Contact from "./sections/Contact/Contact";
@@ -22,6 +23,7 @@ function App() {
           <Navbar />
           <Home />
           <About />
+          <Experience />
           <Skills />
           <Projects />
           <Contact />
