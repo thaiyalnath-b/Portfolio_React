@@ -1,113 +1,81 @@
-import React from "react";
-import "./Experience.css";
+// sections/Experience/Experience.jsx
+import React, { useRef } from 'react';
+import './Experience.css';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
-const Experience = () => {
-    return (
-        <section className="experience-section" id="Experience">
-            <div className="experience-container">
+const EXPERIENCES = [
+  {
+    role: 'Full Stack Developer Intern',
+    company: 'Draptor Technologies',
+    period: 'Mar 2026 – Present · Bengaluru',
+    achievements: [
+      <>Spearheaded development of a production-ready <b>MERN Stack</b> web application for commercial real estate listings, delivering 10+ core features including full CRUD operations to live end-users.</>,
+      <>Engineered secure <b>RESTful APIs</b> with <b>JWT authentication</b> and role-based access control (RBAC); integrated <b>Cloudinary</b> for cloud image management and <b>Firebase</b> for real-time data sync and push notifications.</>,
+      <>Configured server-side pagination, advanced search & filtering, and SEO-friendly slug URLs; designed an admin dashboard with 5+ management modules using reusable React components, Context API, and Axios.</>,
+      <>Coordinated cross-platform optimization and maintained Git/GitHub workflows in an Agile environment, contributing to consistent, on-schedule feature delivery.</>,
+    ],
+    stack: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JWT', 'Firebase', 'Cloudinary', 'Context API', 'Axios', 'Git'],
+  },
+  {
+    role: 'Full Stack Developer Intern',
+    company: 'Bambhari',
+    period: 'Dec 2025 – Mar 2026 · Remote',
+    achievements: [
+      <>Built 3+ responsive, mobile-first web interfaces for <b>Ayurveda Ayatanam</b> using React.js, HTML5, CSS3, JavaScript (ES6+), and Bootstrap; ensured cross-browser and cross-device compatibility.</>,
+      <>Developed and launched <b>BRI Plagiarism</b>, a full-stack Python/Django application featuring JWT authentication, PDF upload & parsing, an interactive user dashboard, and ML-based similarity detection — reducing manual document review time by over <b>60%</b>.</>,
+      <>Leveraged <b>Django MVT architecture</b> with SQLite3 and database management best practices to build scalable back-end systems; upheld code quality through Git/GitHub code reviews and modular, reusable component design.</>,
+      <>Collaborated within Scrum methodology across sprint cycles, contributing to iterative delivery and cross-functional team coordination.</>,
+    ],
+    stack: ['Python', 'Django', 'React.js', 'HTML5', 'CSS3', 'JavaScript (ES6+)', 'Bootstrap', 'SQLite3', 'JWT', 'Git'],
+  },
+];
 
-                <h2 className="experience-title">Experience</h2>
+function Experience() {
+  const ref = useRef(null);
+  useScrollReveal(ref);
 
-                {/* Role 1: Draptor Technologies */}
-                <div className="experience-card">
+  return (
+    <section id="experience" className="experience-section" ref={ref} aria-label="Work experience">
+      <div className="experience-container">
 
-                    <div className="experience-header">
-                        <h3>Full Stack Developer Intern — Draptor Technologies</h3>
-                        <span>Mar 2026 – Present · Bengaluru, India</span>
-                    </div>
+        <div className="experience-header reveal">
+          <div className="badge">Career</div>
+          <h2 className="experience-title">Work Experience</h2>
+        </div>
 
-                    <ul className="experience-list">
-                        <li>
-                            Spearheaded development of a production-ready <b>MERN Stack</b> web
-                            application for commercial real estate listings, delivering 10+ core
-                            features including full CRUD operations to live end-users.
-                        </li>
-                        <li>
-                            Engineered secure <b>RESTful APIs</b> with <b>JWT authentication</b> and
-                            role-based access control (RBAC); integrated <b>Cloudinary</b> for
-                            cloud image management and <b>Firebase</b> for real-time data sync and
-                            push notifications.
-                        </li>
-                        <li>
-                            Configured server-side pagination, advanced search &amp; filtering,
-                            and SEO-friendly slug URLs; designed an admin dashboard with 5+
-                            management modules using reusable React components, Context API,
-                            and Axios.
-                        </li>
-                        <li>
-                            Coordinated cross-platform optimization and maintained Git/GitHub
-                            workflows in an Agile environment, contributing to consistent,
-                            on-schedule feature delivery.
-                        </li>
-                    </ul>
-
-                    <div className="tech-stack">
-                        <span>MongoDB</span>
-                        <span>Express.js</span>
-                        <span>React.js</span>
-                        <span>Node.js</span>
-                        <span>JWT</span>
-                        <span>Firebase</span>
-                        <span>Cloudinary</span>
-                        <span>Context API</span>
-                        <span>Axios</span>
-                        <span>Git</span>
-                    </div>
-
+        <div className="experience-timeline" role="list">
+          {EXPERIENCES.map((exp, i) => (
+            <article
+              className={`experience-card reveal reveal-delay-${i + 1}`}
+              key={exp.company}
+              role="listitem"
+            >
+              <div className="experience-inner">
+                <div className="exp-top">
+                  <h3 className="exp-role">{exp.role}</h3>
+                  <span className="exp-period">{exp.period}</span>
                 </div>
 
-                {/* Role 2: Bambhari */}
-                <div className="experience-card">
+                <div className="exp-company">{exp.company}</div>
 
-                    <div className="experience-header">
-                        <h3>Full Stack Developer Intern — Bambhari</h3>
-                        <span>Dec 2025 – Mar 2026 · Remote</span>
-                    </div>
+                <ul className="exp-list" aria-label={`Achievements at ${exp.company}`}>
+                  {exp.achievements.map((item, j) => (
+                    <li key={j}>{item}</li>
+                  ))}
+                </ul>
 
-                    <ul className="experience-list">
-                        <li>
-                            Built 3+ responsive, mobile-first web interfaces for{" "}
-                            <b>Ayurveda Ayatanam</b> using React.js, HTML5, CSS3, JavaScript
-                            (ES6+), and Bootstrap; ensured cross-browser and cross-device
-                            compatibility.
-                        </li>
-                        <li>
-                            Developed and launched <b>BRI Plagiarism</b>, a full-stack
-                            Python/Django application featuring JWT authentication, PDF upload
-                            &amp; parsing, an interactive user dashboard, and ML-based similarity
-                            detection — reducing manual document review time by over <b>60%</b>.
-                        </li>
-                        <li>
-                            Leveraged <b>Django MVT architecture</b> with SQLite3 and database
-                            management best practices to build scalable back-end systems;
-                            upheld code quality through Git/GitHub code reviews and modular,
-                            reusable component design.
-                        </li>
-                        <li>
-                            Collaborated within Scrum methodology across sprint cycles,
-                            contributing to iterative delivery and cross-functional team
-                            coordination.
-                        </li>
-                    </ul>
-
-                    <div className="tech-stack">
-                        <span>Python</span>
-                        <span>Django</span>
-                        <span>React.js</span>
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript (ES6+)</span>
-                        <span>Bootstrap</span>
-                        <span>SQLite3</span>
-                        <span>JWT</span>
-                        <span>Git</span>
-                    </div>
-
+                <div className="exp-stack" aria-label="Technologies used">
+                  {exp.stack.map((tech) => (
+                    <span className="exp-tag" key={tech}>{tech}</span>
+                  ))}
                 </div>
-
-            </div>
-        </section>
-    );
-};
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default Experience;

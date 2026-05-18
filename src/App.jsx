@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './styles/styles.css'
 
 import Navbar from './components/Navbar/Navbar';
 import Home from "./sections/Home/Home";
@@ -15,7 +16,7 @@ function App() {
   const [loading, setLoading] = useState(true); // 👈 control intro
 
   return (
-    <>
+    <div className="app">
       {loading ? (
         <IntroLoader onFinish={() => setLoading(false)} />
       ) : (
@@ -31,7 +32,7 @@ function App() {
           <Analytics />
         </>
       )}
-    </>
+    </div>
   );
 }
 

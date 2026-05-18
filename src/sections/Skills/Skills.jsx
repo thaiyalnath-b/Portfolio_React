@@ -1,85 +1,106 @@
-import React from "react";
-import "./Skills.css";
+// sections/Skills/Skills.jsx
+import React, { useRef } from 'react';
+import './Skills.css';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
+
+const SKILL_CARDS = [
+  {
+    num: '01',
+    icon: '⚛️',
+    title: 'Frontend',
+    tags: ['HTML5', 'CSS3', 'JavaScript ES6+', 'React.js', 'Bootstrap'],
+  },
+  {
+    num: '02',
+    icon: '🐍',
+    title: 'Backend',
+    tags: ['Python', 'Django', 'REST Framework', 'Node.js', 'Express.js'],
+  },
+  {
+    num: '03',
+    icon: '🗄️',
+    title: 'Databases',
+    tags: ['MySQL', 'MongoDB', 'SQLite3', 'Django ORM', 'Firebase'],
+  },
+  {
+    num: '04',
+    icon: '🛠️',
+    title: 'Dev Workflow',
+    tags: ['Git', 'GitHub', 'VS Code', 'Agile / Scrum', 'Debugging'],
+  },
+  {
+    num: '05',
+    icon: '☁️',
+    title: 'Cloud & Deploy',
+    tags: ['Vercel', 'PythonAnywhere', 'Cloudinary', 'Environment Config', 'Static Management'],
+  },
+  {
+    icon: '💡',
+    title: 'What I Deliver',
+    isHighlight: true,
+    deliverables: [
+      'End-to-End Web Applications',
+      'Secure API Integrations',
+      'Database-Driven Logic',
+      'Mobile-First Interfaces',
+      'Production-Ready Systems',
+    ],
+  },
+];
 
 function Skills() {
+  const ref = useRef(null);
+  useScrollReveal(ref);
+
   return (
-    <section className="skills-section" id="skills">
+    <section id="skills" className="skills-section" ref={ref} aria-label="Technical skills">
       <div className="skills-container">
-        <div className="skills-header">
-          <div className="skills-badge">Technical Stack</div>
-          <h2 className="skills-title">Full Stack <span className="cyan-glow">Expertise</span></h2>
+
+        <div className="skills-header reveal">
+          <div className="badge">Technical Stack</div>
+          <h2 className="skills-title">
+            Full Stack <span className="cyan-glow-text">Expertise</span>
+          </h2>
           <p className="skills-subtitle">
-            Bridging the gap between robust backend architecture and interactive frontend experiences.
+            Bridging robust backend architecture with interactive frontend experiences —
+            from database schema to pixel-perfect UI.
           </p>
         </div>
 
         <div className="skills-grid">
-          <div className="skill-card">
-            <div className="card-header">
-              <span className="card-number">01</span>
-              <div className="card-icon">⚛️</div>
-            </div>
-            <h3>Frontend</h3>
-            <div className="skill-tags">
-              <span>HTML5</span><span>CSS3</span><span>JS ES6+</span><span>React.js</span><span>Bootstrap</span>
-            </div>
-          </div>
+          {SKILL_CARDS.map((card, i) => (
+            <div
+              className={`skill-card reveal reveal-delay-${(i % 3) + 1}${card.isHighlight ? ' skill-card--highlight' : ''}`}
+              key={card.title}
+              aria-label={`Skill category: ${card.title}`}
+            >
+              <div className="skill-card__header">
+                {card.num
+                  ? <span className="skill-card__num">{card.num}</span>
+                  : <span />
+                }
+                <span className="skill-card__icon" aria-hidden="true">{card.icon}</span>
+              </div>
 
-          <div className="skill-card">
-            <div className="card-header">
-              <span className="card-number">02</span>
-              <div className="card-icon">🐍</div>
-            </div>
-            <h3>Backend</h3>
-            <div className="skill-tags">
-              <span>Python</span><span>Django</span><span>REST Framework</span>
-            </div>
-          </div>
+              <h3 className="skill-card__title">{card.title}</h3>
 
-          <div className="skill-card">
-            <div className="card-header">
-              <span className="card-number">03</span>
-              <div className="card-icon">🗄️</div>
-            </div>
-            <h3>Database</h3>
-            <div className="skill-tags">
-              <span>MySQL</span><span>MongoDB</span><span>SQLite</span><span>Django ORM</span>
-            </div>
-          </div>
+              {card.tags && (
+                <div className="skill-tags" role="list">
+                  {card.tags.map((tag) => (
+                    <span className="skill-tag" key={tag} role="listitem">{tag}</span>
+                  ))}
+                </div>
+              )}
 
-          <div className="skill-card">
-            <div className="card-header">
-              <span className="card-number">04</span>
-              <div className="card-icon">🛠️</div>
+              {card.deliverables && (
+                <ul className="skill-deliverables" aria-label="Deliverables">
+                  {card.deliverables.map((d) => (
+                    <li key={d}>{d}</li>
+                  ))}
+                </ul>
+              )}
             </div>
-            <h3>Workflow</h3>
-            <div className="skill-tags">
-              <span>Git</span><span>GitHub</span><span>VS Code</span><span>Debugging</span>
-            </div>
-          </div>
-
-          <div className="skill-card">
-            <div className="card-header">
-              <span className="card-number">05</span>
-              <div className="card-icon">🚀</div>
-            </div>
-            <h3>Cloud</h3>
-            <div className="skill-tags">
-              <span>PythonAnywhere</span><span>Static Management</span><span>Environment Configuration</span><span>Vercel</span>
-            </div>
-          </div>
-
-          <div className="skill-card highlight-card">
-            <div className="card-header">
-              <div className="card-icon">💡</div>
-            </div>
-            <h3>Deliverables</h3>
-            <ul className="capabilities-list">
-              <li>End-to-End Apps</li>
-              <li>Secure API Integration</li>
-              <li>Database Driven Logic</li>
-            </ul>
-          </div>
+          ))}
         </div>
       </div>
     </section>

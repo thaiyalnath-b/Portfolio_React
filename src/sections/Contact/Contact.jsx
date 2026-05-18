@@ -1,125 +1,182 @@
-import React, { useState } from "react";
-import "./Contact.css";
+// sections/Contact/Contact.jsx
+import React, { useState, useCallback, useRef } from 'react';
+import './Contact.css';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
+
+const CONTACT_INFO = [
+  { icon: '📧', label: 'Email',    value: 'thaiyalnath2005@gmail.com' },
+  { icon: '📍', label: 'Location', value: 'Bengaluru, Karnataka, India' },
+  { icon: '📞', label: 'Phone',    value: '+91 9345854158' },
+];
+
+const SOCIAL_LINKS = [
+  { label: 'GitHub',   href: 'https://github.com/thaiyalnath-b' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thaiyalnathb/' },
+];
+
+const FORMSPREE_URL = 'https://formspree.io/f/mblzzgaa';
+const EMPTY_FORM    = { name: '', email: '', message: '' };
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
+  const ref = useRef(null);
+  useScrollReveal(ref);
 
-  const [status, setStatus] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form,   setForm]   = useState(EMPTY_FORM);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = useCallback((e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setStatus("");
+    setStatus('submitting');
 
     try {
-      const response = await fetch("https://formspree.io/f/mblzzgaa", {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(e.target)
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(e.target),
       });
 
-      if (response.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
+      if (res.ok) {
+        setStatus('success');
+        setForm(EMPTY_FORM);
       } else {
-        setStatus("error");
+        setStatus('error');
       }
-    } catch (error) {
-      setStatus("error");
-    } finally {
-      setIsSubmitting(false);
+    } catch {
+      setStatus('error');
     }
-  };
+  }, []);
 
   return (
-    <section className="contact-section" id="contact">
+    <section id="contact" className="contact-section" ref={ref} aria-label="Contact">
       <div className="contact-wrapper">
-        <div className="contact-header">
-          <span className="contact-badge">Available for Work</span>
-          <h2 className="contact-title">Let’s Build Something <span className="cyan-glow">Great</span></h2>
-          <p className="contact-subtitle">Have a project in mind? Reach out and let's start a conversation.</p>
+
+        <div className="contact-header reveal">
+          <div className="badge">Available for Work</div>
+          <h2 className="contact-title">
+            Let's Build Something <span className="cyan-glow-text">Great</span>
+          </h2>
+          <p className="contact-subtitle">
+            Have a project in mind? Reach out and let's start a conversation.
+          </p>
         </div>
 
         <div className="contact-grid">
-          <div className="contact-visual-info">
-            <div className="info-card">
-              <div className="info-item">
-                <span className="info-icon">📧</span>
-                <div>
-                  <label>Email Me</label>
-                  <p>thaiyalnath2005@gmail.com</p>
-                </div>
-              </div>
-              <div className="info-item">
-                <span className="info-icon">📍</span>
-                <div>
-                  <label>Location</label>
-                  <p>Bengaluru, Karnataka</p>
-                </div>
-              </div>
-              <div className="info-item">
-                <span className="info-icon">📞</span>
-                <div>
-                  <label>Call Me</label>
-                  <p>+91 9345854158</p>
-                </div>
-              </div>
-            </div>
 
-            <div className="social-links-container">
-              <a href="https://github.com/thaiyalnath-b" target="_blank" rel="noreferrer" className="social-btn">GitHub</a>
-              <a href="https://www.linkedin.com/in/thaiyalnathb/" target="_blank" rel="noreferrer" className="social-btn">LinkedIn</a>
+          {/* ── INFO CARD ── */}
+          <div className="contact-info-card reveal reveal-delay-1" aria-label="Contact information">
+            {CONTACT_INFO.map(({ icon, label, value }) => (
+              <div className="contact-info-item" key={label}>
+                <div className="contact-info-icon" aria-hidden="true">{icon}</div>
+                <div>
+                  <span className="contact-info-label">{label}</span>
+                  <p className="contact-info-value">{value}</p>
+                </div>
+              </div>
+            ))}
+
+            <div className="contact-info-divider" aria-hidden="true" />
+
+            <div className="contact-social">
+              {SOCIAL_LINKS.map(({ label, href }) => (
+                <a
+                  key={label}
+                  className="social-btn"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${label} profile`}
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
 
-          <form className="contact-glass-form" onSubmit={handleSubmit}>
-            <div className="input-group">
+          {/* ── FORM ── */}
+          <form
+            className="contact-form reveal reveal-delay-2"
+            onSubmit={handleSubmit}
+            noValidate
+            aria-label="Contact form"
+          >
+            <div className="form-group">
               <input
+                className="form-input"
                 type="text"
                 name="name"
                 placeholder="Full Name"
                 required
-                value={formData.name}
+                value={form.name}
                 onChange={handleChange}
+                autoComplete="name"
+                aria-label="Your full name"
+                disabled={status === 'submitting'}
               />
             </div>
 
-            <div className="input-group">
+            <div className="form-group">
               <input
+                className="form-input"
                 type="email"
                 name="email"
                 placeholder="Email Address"
                 required
-                value={formData.email}
+                value={form.email}
                 onChange={handleChange}
+                autoComplete="email"
+                aria-label="Your email address"
+                disabled={status === 'submitting'}
               />
             </div>
 
-            <div className="input-group">
+            <div className="form-group">
               <textarea
+                className="form-textarea"
                 name="message"
-                placeholder="Tell me about your project..."
+                placeholder="Tell me about your project or opportunity..."
                 required
-                value={formData.message}
+                value={form.message}
                 onChange={handleChange}
-              ></textarea>
+                aria-label="Your message"
+                disabled={status === 'submitting'}
+              />
             </div>
 
-            <button type="submit" disabled={isSubmitting} className="submit-btn">
-              {isSubmitting ? "Sending..." : "Send Message"}
+            <button
+              type="submit"
+              className="form-submit"
+              disabled={status === 'submitting'}
+              aria-label="Send message"
+            >
+              {status === 'submitting' ? (
+                <>
+                  <span className="form-submit__spinner" aria-hidden="true" />
+                  Sending…
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </>
+              )}
             </button>
 
-            {status === "success" && <p className="status-msg success">Message delivered! I'll get back to you soon.</p>}
-            {status === "error" && <p className="status-msg error">Submission failed. Please try again.</p>}
+            {status === 'success' && (
+              <p className="form-status form-status--success" role="status" aria-live="polite">
+                ✓ Message delivered — I'll get back to you soon!
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="form-status form-status--error" role="alert" aria-live="assertive">
+                ✗ Submission failed. Please try again or email me directly.
+              </p>
+            )}
           </form>
         </div>
       </div>
