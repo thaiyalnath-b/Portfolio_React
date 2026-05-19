@@ -23,6 +23,9 @@ function Navbar() {
   const hamburgerButtonRef = useRef(null);
   const closeButtonRef = useRef(null);
 
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
+
   /* ── Scroll: navbar shadow ── */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -32,22 +35,49 @@ function Navbar() {
   }, []);
 
   /* ── Active section via IntersectionObserver ── */
+  /* ── Active section based on scroll position ── */
   useEffect(() => {
-    const sectionIds = NAV_ITEMS.map((i) => i.href.replace('#', ''));
-    const observers = [];
+    const handleScroll = () => {
+      const navbarHeight =
+        window.innerWidth <= 600
+          ? 65
+          : window.innerWidth <= 880
+            ? 72
+            : 80;
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-        { threshold: 0.25, rootMargin: '-80px 0px -30% 0px' }
+      const scrollPosition =
+        window.scrollY + navbarHeight + 120;
+
+      let currentSection = "home";
+
+      NAV_ITEMS.forEach(({ href }) => {
+        const id = href.replace("#", "");
+        const section = document.getElementById(id);
+
+        if (
+          section &&
+          scrollPosition >= section.offsetTop
+        ) {
+          currentSection = id;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      { passive: true }
+    );
+
+    handleScroll();
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
       );
-      obs.observe(el);
-      observers.push(obs);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   /* ── Body scroll lock when menu open ── */
@@ -75,7 +105,7 @@ function Navbar() {
     };
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
-  }, [menuOpen]);
+  }, [menuOpen, closeMenu]);
 
   /* ── Close on resize above breakpoint ── */
   useEffect(() => {
@@ -84,30 +114,36 @@ function Navbar() {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
-  const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
+  }, [closeMenu]);
 
   const handleNavClick = useCallback((e, href) => {
     e.preventDefault();
 
     closeMenu();
 
+    // add these 2 lines
+    const id = href.replace('#', '');
+    setActiveSection(id);
+
     const target = document.querySelector(href);
 
     if (target) {
-
-      const navbarHeight = 60;
+      const navbarHeight =
+        window.innerWidth <= 600
+          ? 65
+          : window.innerWidth <= 880
+            ? 72
+            : 80;
 
       const targetPosition =
         target.offsetTop - navbarHeight;
 
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth',
-      });
-
+      setTimeout(() => {
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth',
+        });
+      }, 150);
     }
 
   }, [closeMenu]);

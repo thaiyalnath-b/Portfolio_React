@@ -25,7 +25,25 @@
 }
 
 #about {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 80px;
+}
+
+@media (max-width: 880px) {
+  #about {
+    scroll-margin-top: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  #about {
+    scroll-margin-top: 65px;
+  }
+}
+
+@media (max-width: 420px) {
+  #about {
+    scroll-margin-top: 60px;
+  }
 }
 
 /* ── SECTION BASE (NO HORIZONTAL OVERFLOW) ─────────────────────────────── */
@@ -536,15 +554,8 @@
     opacity: 1;
   }
 
-  .about-image-frame:hover,
-  .about-pill:hover {
+.about-image-frame:hover,
+   .about-pill:hover {
     transform: none;
-  }
-}
-
-/* Ensure no horizontal scroll on any device */
-html,
-body {
-  overflow-x: hidden;
-  width: 100%;
-}
+   }
+ }

@@ -4,6 +4,24 @@
   scroll-margin-top: 80px;
 }
 
+@media (max-width: 880px) {
+  #skills {
+    scroll-margin-top: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  #skills {
+    scroll-margin-top: 65px;
+  }
+}
+
+@media (max-width: 420px) {
+  #skills {
+    scroll-margin-top: 60px;
+  }
+}
+
 .skills-section {
   padding: var(--section-pad) clamp(20px, 5vw, 60px);
   position: relative;
@@ -195,6 +213,16 @@
 @media (max-width: 640px) {
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .skills-title {
+    font-size: 1.8rem;
+  }
+
+  .skill-card {
+    padding: 18px 14px;
   }
 }
 

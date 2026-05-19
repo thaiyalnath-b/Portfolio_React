@@ -76,6 +76,24 @@ html {
   overflow-x: hidden;
 }
 
+@media (max-width: 880px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    scroll-padding-top: 65px;
+  }
+}
+
+@media (max-width: 420px) {
+  html {
+    scroll-padding-top: 60px;
+  }
+}
+
 html,
 body,
 #root,
@@ -347,13 +365,19 @@ section[id] {
 
 @media (max-width: 880px) {
   section[id] {
-    scroll-margin-top: 75px;
+    scroll-margin-top: 72px;
   }
 }
 
 @media (max-width: 600px) {
   section[id] {
     scroll-margin-top: 65px;
+  }
+}
+
+@media (max-width: 420px) {
+  section[id] {
+    scroll-margin-top: 60px;
   }
 }
 

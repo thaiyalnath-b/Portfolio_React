@@ -4,6 +4,24 @@
   scroll-margin-top: 80px;
 }
 
+@media (max-width: 880px) {
+  #experience {
+    scroll-margin-top: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  #experience {
+    scroll-margin-top: 65px;
+  }
+}
+
+@media (max-width: 420px) {
+  #experience {
+    scroll-margin-top: 60px;
+  }
+}
+
 .experience-section {
   padding: var(--section-pad) clamp(20px, 5vw, 60px);
   position: relative;
@@ -264,6 +282,16 @@
 
   .experience-timeline::before {
     left: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .experience-container {
+    padding: 0 12px;
+  }
+
+  .experience-title {
+    font-size: 1.8rem;
   }
 }
 

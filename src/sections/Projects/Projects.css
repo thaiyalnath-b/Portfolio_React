@@ -4,6 +4,24 @@
   scroll-margin-top: 80px;
 }
 
+@media (max-width: 880px) {
+  #projects {
+    scroll-margin-top: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  #projects {
+    scroll-margin-top: 65px;
+  }
+}
+
+@media (max-width: 420px) {
+  #projects {
+    scroll-margin-top: 60px;
+  }
+}
+
 .projects-section {
   padding: var(--section-pad) clamp(20px, 5vw, 60px);
   position: relative;
@@ -266,6 +284,16 @@
 
   .project-card:first-child .project-image {
     height: 220px;
+  }
+}
+
+@media (max-width: 360px) {
+  .projects-title {
+    font-size: 1.8rem;
+  }
+
+  .project-content {
+    padding: 16px 14px;
   }
 }
 
