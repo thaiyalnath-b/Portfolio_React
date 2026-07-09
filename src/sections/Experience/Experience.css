@@ -293,6 +293,14 @@
   .experience-title {
     font-size: 1.8rem;
   }
+
+  .experience-timeline{
+    margin-left: -30px !important;
+  }
+
+  .exp-list li {
+    margin-left: -32px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

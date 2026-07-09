@@ -481,7 +481,7 @@
 /* Extremely small devices (<=360px) */
 @media (max-width: 360px) {
   .about-image-frame {
-    max-width: 230px;
+    max-width: 280px;
   }
 
   .about-stat-card {
